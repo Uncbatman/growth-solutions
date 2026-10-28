@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://growth-solutions-indol.vercel.app/sitemap.xml
