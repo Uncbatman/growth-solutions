@@ -50,12 +50,16 @@ header,main,footer{position:relative;z-index:1}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{font-family:var(--head);font-weight:800;font-size:1.25rem;letter-spacing:-.02em;text-decoration:none}
+.brand-group{display:flex;align-items:center;gap:.35rem;min-width:0}
+.portfolio-link{display:inline-flex;align-items:center;gap:.2rem;color:var(--ink);font-family:var(--body);font-style:italic;font-weight:400;font-size:.72rem;letter-spacing:0;text-decoration:none;white-space:nowrap}
+.portfolio-link:hover{text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:3px}
+.portfolio-arrow{display:inline-block;color:var(--green);font-style:normal;font-size:.85rem;animation:portfolio-nudge 2.4s ease-in-out infinite}
+@keyframes portfolio-nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 .btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;padding:.8rem 1.4rem;border-radius:999px;transition:transform .35s ease}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px -12px var(--green)}
 .btn:active{transform:translateY(0) scale(.98)}
 .btn.sm{padding:.55rem 1.1rem;font-size:.95rem}
 .brand .g{color:var(--green)}
-.brand .by{font-family:var(--body);font-style:italic;font-weight:400;font-size:.72rem;letter-spacing:0;color:var(--ink);margin-left:.3rem}
 .mtn{position:absolute;left:0;right:0;bottom:0;width:100%;height:38%;z-index:0;pointer-events:none}
 
 .hero{position:relative;padding:4.5rem 0 5rem;overflow:hidden}
@@ -198,7 +202,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
 }
 
 .brand{font-size:clamp(.95rem,3.6vw,1.25rem);line-height:1.05}
-@media (max-width:560px){.brand .by{display:block;margin:.15rem 0 0}}
+@media (max-width:560px){.brand-group{gap:.2rem}.portfolio-link{font-size:.68rem}}
 .work{padding:0;border-top:1px solid var(--line)}
 .work-head{padding:5rem 0 2rem}
 .work-head p{margin-top:1.2rem;max-width:36rem;color:var(--muted)}
@@ -293,7 +297,10 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
 </div>
 <header>
   <div class="wrap">
-    <a class="brand" href="#top"><span class="g">Growth</span> Solutions <em class="by">by Adam</em></a>
+    <div class="brand-group">
+      <a class="brand" href="#top"><span class="g">Growth</span> Solutions</a>
+      <a class="portfolio-link" href="https://my-portfolio-omega-sand-89.vercel.app/" target="_blank" rel="noopener" aria-label="Adam — visit my portfolio (opens in a new tab)">by Adam <span class="portfolio-arrow" aria-hidden="true">↗</span></a>
+    </div>
     <a class="btn sm" href="https://wa.me/254792120237?text=Hi%20Growth%20Solutions%2C%20I%27d%20like%20to%20grow%20my%20sales%20on%20WhatsApp" target="_blank" rel="noopener">Chat with us</a>
   </div>
 </header>
@@ -450,7 +457,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
 
   <section class="about">
     <div class="wrap">
-      <h2>Hi, I’m Adam</h2>
+      <h2>Hi, I’m <a class="portfolio-link" href="https://my-portfolio-omega-sand-89.vercel.app/" target="_blank" rel="noopener">Adam</a></h2>
       <p>I run Growth Solutions. I help small businesses in Kenya turn the enquiries they already get on WhatsApp into paying customers.</p>
       <p>When you work with us, you talk to me directly. I look at your chats, fix the gaps, and build the pages that send people to you.</p>
     </div>
@@ -477,7 +484,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
     </div>
   </section>
 </main>
-<footer><div class="wrap">© 2026 Growth Solutions by Adam. We help businesses across Kenya grow their sales through WhatsApp.</div></footer>
+<footer><div class="wrap">© 2026 Growth Solutions by <a class="portfolio-link" href="https://my-portfolio-omega-sand-89.vercel.app/" target="_blank" rel="noopener">Adam</a>. We help businesses across Kenya grow their sales through WhatsApp.</div></footer>
 
 <script>
 (function(){
@@ -516,7 +523,9 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
     $('dp-preview-name').textContent=name;
     $('dp-headline').textContent='Beautiful '+item.label+' for every home.';
     $('dp-subline').textContent='Browse '+name+' and order in one tap on WhatsApp. Delivery across Kenya.';
-    $('dp-footer').textContent='© 2026 '+name+' · Made by Growth Solutions by Adam';
+    var credit=$('dp-footer');credit.textContent='© 2026 '+name+' · Made by Growth Solutions by ';
+    var adam=document.createElement('a');adam.href='https://my-portfolio-omega-sand-89.vercel.app/';adam.target='_blank';adam.rel='noopener';adam.textContent='Adam';
+    credit.appendChild(adam);
     var products=$('dp-products');products.textContent='';
     item.products.forEach(function(label){var card=document.createElement('div'),art=document.createElement('div'),caption=document.createElement('span');card.className='dp-product';art.className='dp-product-art';caption.textContent=label;card.appendChild(art);card.appendChild(caption);products.appendChild(card);});
     var message='Hi, I run '+(state.name.trim()||'a home decor shop')+'. I mainly sell '+item.label+'. I like the “'+state.look+'” look. Please send me my free website preview.';
@@ -535,6 +544,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
   function splitWords(heading,visible){
     var text=heading.textContent.trim();
     heading.setAttribute('aria-label',text);
+    if(heading.querySelector('a')) return;
     heading.textContent='';
     text.split(/\s+/).forEach(function(word,index){
       if(index) heading.appendChild(document.createTextNode(' '));
