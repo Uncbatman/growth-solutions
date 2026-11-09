@@ -292,6 +292,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
 .work-head p{margin-top:1.2rem;max-width:36rem;color:var(--muted)}
 .tag{display:inline-block;margin-top:1.2rem;font-size:.8rem;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:.15rem .75rem;color:var(--muted)}
 .portfolio-filters{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.5rem 0 .5rem}
+.portfolio-guidance{max-width:54rem;margin-top:1rem;padding:.85rem 1rem;border-left:2px solid var(--green);background:rgba(255,255,255,.025);color:var(--muted);font-size:.9rem;line-height:1.55}
 .portfolio-filter{min-height:42px;padding:.45rem .85rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);font:inherit;font-size:.88rem;cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease}
 .portfolio-filter:hover{border-color:rgba(31,225,108,.5);color:var(--ink)}
 .portfolio-filter[aria-pressed="true"]{border-color:var(--green);background:var(--green);color:#08170E}
@@ -548,25 +549,26 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
   <section class="work" id="work">
     <div class="wrap work-head">
       <h2>Browse examples by the work you do</h2>
-      <p class="rv">Explore product catalogues, project and service showcases, or examples from other sectors.</p>
+      <p class="rv">Start with the work closest to yours: home décor and furniture showcases, or interior projects and trade suppliers. We also include selected work from other sectors.</p>
       <span class="tag">Selected work &amp; sample designs</span>
       <div class="portfolio-filters" role="group" aria-label="Filter website examples">
         <button class="portfolio-filter" type="button" data-filter="all" aria-pressed="true">All examples</button>
-        <button class="portfolio-filter" type="button" data-filter="products" aria-pressed="false">Product catalogues</button>
-        <button class="portfolio-filter" type="button" data-filter="projects" aria-pressed="false">Projects &amp; services</button>
+        <button class="portfolio-filter" type="button" data-filter="decor" aria-pressed="false">Home décor &amp; furniture</button>
+        <button class="portfolio-filter" type="button" data-filter="interiors" aria-pressed="false">Interior projects &amp; suppliers</button>
         <button class="portfolio-filter" type="button" data-filter="other" aria-pressed="false">Other sectors</button>
       </div>
+      <p class="portfolio-guidance">For product businesses, lead with clear product photos and useful categories. For B2B designers, makers and suppliers, build each project story around the brief, your role, finished work and a clear enquiry route.</p>
     </div>
     <div class="fly" id="fly">
       <div class="track" id="track">
-        <figure class="card3" data-category="projects"><div class="device-frame phone-frame"><img src="/assets/samples/sample-1.webp" alt="Screenshot of the Didi Events sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="745"></div><figcaption><b>Didi Events</b>Event planning and decor, Eldoret</figcaption></figure>
-        <figure class="card3" data-category="products"><div class="device-frame phone-frame"><img src="/assets/samples/sample-5.webp" alt="Screenshot of the BigBang Glass sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="757"></div><figcaption><b>BigBang Glass</b>Glass, mirrors and furniture, Ruiru</figcaption></figure>
+        <figure class="card3" data-category="interiors"><div class="device-frame phone-frame"><img src="/assets/samples/sample-1.webp" alt="Screenshot of the Didi Events sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="745"></div><figcaption><b>Didi Events</b>Event planning and decor, Eldoret · Project &amp; service showcase</figcaption></figure>
+        <figure class="card3" data-category="interiors"><div class="device-frame phone-frame"><img src="/assets/samples/sample-5.webp" alt="Screenshot of the BigBang Glass sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="757"></div><figcaption><b>BigBang Glass</b>Glass, mirrors and furniture, Ruiru · Interior trade supplier</figcaption></figure>
         <figure class="card3" data-category="other"><div class="device-frame phone-frame"><img src="/assets/samples/sample-7.webp" alt="Screenshot of the Edphill Appliances sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="755"></div><figcaption><b>Edphill Appliances</b>TCL and Hisense dealer, Nairobi</figcaption></figure>
         <figure class="card3" data-category="other"><div class="device-frame laptop-frame"><img src="/assets/samples/sample-8.webp" alt="Screenshot of the Auto Aesthetics sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="753"></div><figcaption><b>Auto Aesthetics</b>Car styling, Kiambu</figcaption></figure>
         <figure class="card3" data-category="other"><div class="device-frame phone-frame"><img src="/assets/samples/sample-9.webp" alt="Screenshot of The Ark Dove sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="750"></div><figcaption><b>The Ark Dove</b>Leather shoes, Nairobi</figcaption></figure>
-        <figure class="card3" data-category="products"><div class="device-frame laptop-frame"><img src="/assets/samples/sample-10.webp" alt="Screenshot of the Mombasa Road Furniture sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="753"></div><figcaption><b>Mombasa Road Furniture</b>Furniture showroom</figcaption></figure>
-        <figure class="card3" data-category="products"><div class="device-frame phone-frame"><img src="/assets/samples/sample-11.webp" alt="Screenshot of the Cozy Interior sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="744"></div><figcaption><b>Cozy Interior</b>Decor and furniture, Mombasa</figcaption></figure>
-        <figure class="card3" data-category="products"><div class="device-frame laptop-frame"><img src="/assets/samples/sample-12.webp" alt="Screenshot of the Mocca Homes sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="749"></div><figcaption><b>Mocca Homes</b>Outdoor furniture</figcaption></figure>
+        <figure class="card3" data-category="decor"><div class="device-frame laptop-frame"><img src="/assets/samples/sample-10.webp" alt="Screenshot of the Mombasa Road Furniture sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="753"></div><figcaption><b>Mombasa Road Furniture</b>Furniture showroom</figcaption></figure>
+        <figure class="card3" data-category="decor"><div class="device-frame phone-frame"><img src="/assets/samples/sample-11.webp" alt="Screenshot of the Cozy Interior sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="744"></div><figcaption><b>Cozy Interior</b>Decor and furniture, Mombasa</figcaption></figure>
+        <figure class="card3" data-category="decor"><div class="device-frame laptop-frame"><img src="/assets/samples/sample-12.webp" alt="Screenshot of the Mocca Homes sample design website" loading="lazy" decoding="async" fetchpriority="low" width="380" height="749"></div><figcaption><b>Mocca Homes</b>Outdoor furniture</figcaption></figure>
       </div>
     </div>
   </section>
@@ -642,7 +644,10 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
     <div class="wrap">
       <h2>Questions we get asked</h2>
       <div class="faqs">
-        <details class="faq rv"><summary>How much does a website cost?</summary><p>The Basic Website is KSh 5,000 and the Interactive Catalog is KSh 12,000, one-time. A 20% booking payment reserves your place; the balance is due before launch. Custom-domain setup is included, while registration or renewal is charged at cost. Optional paid hosting is 15% of the package price per month.</p></details>
+        <details class="faq rv"><summary>How much does a website cost?</summary><p>The Basic Website is KSh 5,000 and the Interactive Catalog is KSh 12,000, one-time. A 20% booking payment reserves your place; the balance is due before launch. Custom-domain setup is included, while domain registration or renewal is charged at cost. Optional paid hosting is 15% of the package price per month.</p></details>
+        <details class="faq rv"><summary>What does the optional hosting retainer cover?</summary><p>Paid hosting is optional at 15% of your package price per month: KSh 750 for Basic or KSh 1,800 for Interactive. It covers website hosting. You can opt out and arrange hosting yourself; ongoing content changes and maintenance are not included unless separately agreed.</p></details>
+        <details class="faq rv"><summary>Is a custom domain included?</summary><p>Custom-domain setup and connection to your deployed website are included. The domain name itself and any renewal fees are separate and charged at cost. You can use a domain you already own or choose one to register.</p></details>
+        <details class="faq rv"><summary>How do the two revision rounds work?</summary><p>Each package includes two revision rounds. Gather your feedback into one clear list for each round so we can make the agreed changes together. Requests that change the agreed scope can be discussed and agreed separately before extra work begins.</p></details>
         <details class="faq rv"><summary>How long does it take?</summary><p>Most WhatsApp setups and one-page sites are ready within about a week, once we have your photos and product details.</p></details>
         <details class="faq rv"><summary>Do you work with interior professionals as well as shops?</summary><p>Yes. We work with home décor and furniture businesses, interior designers, makers and trade suppliers. Your site can showcase products, services or project work and direct enquiries to WhatsApp.</p></details>
         <details class="faq rv"><summary>What do you need from me?</summary><p>Your logo, business details, WhatsApp number, social links, and photos or project examples. For an Interactive Catalog, also provide the item names, short descriptions and categories.</p></details>
