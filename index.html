@@ -269,6 +269,23 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
 .pricing-action{width:100%;justify-content:center;margin-top:auto;padding-top:1.15rem}
 .pricing-action .btn{width:100%;justify-content:center}
 .pricing-note{margin-top:1rem;color:var(--muted);font-size:.82rem;line-height:1.5}
+.contact{padding:4.5rem 0;border-top:1px solid var(--line);scroll-margin-top:84px}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:2rem;align-items:start}
+.contact-copy h2{max-width:16ch}
+.contact-copy p:not(.pricing-kicker){margin-top:1rem;max-width:34rem;color:var(--muted)}
+.lead-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding:1.35rem;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}
+.lead-field{display:grid;gap:.45rem;min-width:0}
+.lead-field.full{grid-column:1/-1}
+.lead-field label{font-size:.88rem;font-weight:700}
+.lead-field label span{font-weight:400;color:var(--muted)}
+.lead-control{width:100%;min-height:48px;padding:.7rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.lead-control:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.lead-control::placeholder{color:var(--muted);opacity:.8}
+.lead-textarea{min-height:104px;resize:vertical}
+.lead-submit{grid-column:1/-1;width:100%;min-height:50px;justify-content:center}
+.lead-note{grid-column:1/-1;margin:0;color:var(--muted);font-size:.8rem;line-height:1.45}
+@media (max-width:760px){.contact-grid{grid-template-columns:1fr}.contact-copy h2{max-width:none}.lead-form{grid-template-columns:1fr}.lead-field.full,.lead-submit,.lead-note{grid-column:1}}
+@media (max-width:420px){.contact{padding:3.5rem 0}.lead-form{padding:1rem}}
 @media (max-width:700px){.pricing-audiences,.pricing-grid{grid-template-columns:1fr}.pricing-card{padding:1.25rem}.pricing-amount{font-size:2.25rem}}
 .work{padding:0;border-top:1px solid var(--line)}
 .work-head{padding:5rem 0 2rem}
@@ -460,7 +477,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
             <li>Links to up to 4 social profiles and a one-tap WhatsApp enquiry</li>
             <li>Two revision rounds</li>
           </ul>
-          <div class="pricing-action"><a class="btn" href="https://wa.me/254792120237?text=Hi%20Adam%2C%20I%27m%20interested%20in%20the%20Basic%20Website%20package%20at%20KSh%205%2C000." target="_blank" rel="noopener">Ask about Basic</a></div>
+          <div class="pricing-action"><a class="btn" href="#contact" data-contact-package="basic">Start a Basic booking</a></div>
         </article>
         <article class="pricing-card interactive">
           <div class="pricing-card-top"><span>02 · Interactive</span><span class="pricing-signal">Browse &amp; enquire</span></div>
@@ -475,11 +492,56 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
             <li>Item-specific WhatsApp enquiries, with relevant product options such as size or finish included in the message</li>
             <li>Two revision rounds</li>
           </ul>
-          <div class="pricing-action"><a class="btn" href="https://wa.me/254792120237?text=Hi%20Adam%2C%20I%27m%20interested%20in%20the%20Interactive%20Catalog%20package%20at%20KSh%2012%2C000." target="_blank" rel="noopener">Ask about Interactive</a></div>
+          <div class="pricing-action"><a class="btn" href="#contact" data-contact-package="interactive">Start an Interactive booking</a></div>
         </article>
       </div>
       <p class="pricing-note">You provide the logo, photos and business details. A 20% booking payment reserves your place and covers initial setup costs; the remaining balance is due before launch. Custom-domain setup and deployment are included; domain registration or renewal is charged at cost.</p>
       <p class="pricing-note">Optional paid hosting is 15% of the package price per month: KSh 750/month for Basic or KSh 1,800/month for Interactive. Checkout/payments, stock management, admin dashboards and ongoing content updates are not included.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="pricing-kicker">Quick booking enquiry</p>
+        <h2 id="contact-title">Let’s get your website started.</h2>
+        <p>Share a few details about your business and what you want to showcase. We’ll confirm availability, the booking payment and next steps over WhatsApp.</p>
+      </div>
+      <form class="lead-form" id="lead-form" aria-labelledby="contact-title" aria-describedby="lead-note">
+        <div class="lead-field">
+          <label for="lead-name">Your name</label>
+          <input class="lead-control" id="lead-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="e.g. Amina" required>
+        </div>
+        <div class="lead-field">
+          <label for="lead-business">Business name <span>(optional)</span></label>
+          <input class="lead-control" id="lead-business" name="business" type="text" autocomplete="organization" maxlength="100" placeholder="e.g. Amina Home Studio">
+        </div>
+        <div class="lead-field">
+          <label for="lead-type">What kind of business do you run?</label>
+          <select class="lead-control" id="lead-type" name="businessType" required>
+            <option value="" selected disabled>Choose one</option>
+            <option value="Home décor or furniture business">Home décor or furniture</option>
+            <option value="Interior designer or project-based business">Interior design or projects</option>
+            <option value="Trade supplier or maker">Trade supplier or maker</option>
+            <option value="Other business">Other</option>
+          </select>
+        </div>
+        <div class="lead-field">
+          <label for="lead-package">Which package are you interested in?</label>
+          <select class="lead-control" id="lead-package" name="package" required>
+            <option value="" selected disabled>Choose a package</option>
+            <option value="basic">Basic Website — KSh 5,000</option>
+            <option value="interactive">Interactive Catalog — KSh 12,000</option>
+            <option value="not-sure">Not sure yet</option>
+          </select>
+        </div>
+        <div class="lead-field full">
+          <label for="lead-details">What would you like your site to showcase? <span>(optional)</span></label>
+          <textarea class="lead-control lead-textarea" id="lead-details" name="details" maxlength="600" placeholder="Products, services, project work—or anything you’d like us to know"></textarea>
+        </div>
+        <button class="btn lead-submit" type="submit">Continue in WhatsApp</button>
+        <p class="lead-note" id="lead-note">This form doesn’t store or send your details automatically. It opens a prepared WhatsApp message for you to review and send; no payment is taken here.</p>
+      </form>
     </div>
   </section>
 
@@ -888,6 +950,40 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
       });
     },{passive:true});
   }
+})();
+</script>
+<script>
+(function(){
+  var form=document.getElementById('lead-form');
+  var packageField=document.getElementById('lead-package');
+  if(!form||!packageField) return;
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-contact-package]'),function(link){
+    link.addEventListener('click',function(){
+      packageField.value=link.getAttribute('data-contact-package');
+    });
+  });
+
+  form.addEventListener('submit',function(event){
+    event.preventDefault();
+    if(!form.reportValidity()) return;
+    var data=new FormData(form);
+    var business=String(data.get('business')||'').trim();
+    var details=String(data.get('details')||'').trim();
+    var packageLabels={basic:'Basic Website — KSh 5,000',interactive:'Interactive Catalog — KSh 12,000','not-sure':'Not sure yet'};
+    var lines=[
+      'Hi Growth Solutions, I’d like to book a website.',
+      'Name: '+String(data.get('name')||'').trim(),
+      business?'Business: '+business:'',
+      'Business type: '+String(data.get('businessType')||''),
+      'Package: '+(packageLabels[data.get('package')]||'Not sure yet'),
+      details?'What I’d like to showcase: '+details:''
+    ].filter(Boolean);
+    var url='https://wa.me/254792120237?text='+encodeURIComponent(lines.join('\n'));
+    var whatsappWindow=window.open(url,'_blank');
+    if(whatsappWindow) whatsappWindow.opener=null;
+    else window.location.assign(url);
+  });
 })();
 </script>
 </body>
