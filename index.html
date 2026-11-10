@@ -345,7 +345,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
 .dp-panel,.dp-live{border:1px solid var(--line);border-radius:18px;background:var(--in);padding:1.5rem}
 .dp-field{margin-bottom:1.4rem}
 .dp-label{display:block;font-weight:700;margin-bottom:.65rem}
-.dp-name{width:100%;min-height:48px;padding:.65rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.dp-name,.dp-text{width:100%;min-height:48px;padding:.65rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
 .dp-chips{display:flex;flex-wrap:wrap;gap:.55rem}
 .dp-chips button{min-height:42px;padding:.4rem .85rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:inherit;cursor:pointer}
 .dp-chips button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#08170E}
@@ -571,6 +571,18 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
             <input class="dp-name" id="dp-name" type="text" maxlength="40" placeholder="e.g. Your business name" autocomplete="organization">
           </div>
           <div class="dp-field">
+            <label class="dp-label" for="dp-custom-headline">Homepage headline</label>
+            <input class="dp-text" id="dp-custom-headline" type="text" maxlength="64" placeholder="e.g. Thoughtful pieces for beautiful homes">
+          </div>
+          <div class="dp-field">
+            <label class="dp-label" for="dp-custom-tagline">Supporting message</label>
+            <input class="dp-text" id="dp-custom-tagline" type="text" maxlength="90" placeholder="e.g. Handpicked pieces, delivered to your door">
+          </div>
+          <div class="dp-field">
+            <span class="dp-label" id="dp-actions-label">Main button</span>
+            <div class="dp-chips" id="dp-actions" role="group" aria-labelledby="dp-actions-label"></div>
+          </div>
+          <div class="dp-field">
             <span class="dp-label" id="dp-items-label">What do you sell most?</span>
             <div class="dp-chips" id="dp-items" role="group" aria-labelledby="dp-items-label"></div>
           </div>
@@ -583,7 +595,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
         </div>
         <div class="dp-live" id="dp-live" aria-live="polite" aria-label="Live website design preview">
           <div class="dp-nav"><b id="dp-preview-name">Your Shop</b><span>Chat on WhatsApp</span></div>
-          <div class="dp-hero"><h3 id="dp-headline"></h3><p id="dp-subline"></p><strong>Order on WhatsApp</strong></div>
+          <div class="dp-hero"><h3 id="dp-headline"></h3><p id="dp-subline"></p><strong id="dp-cta-preview">Shop on WhatsApp</strong></div>
           <div class="dp-products" id="dp-products"></div>
           <div class="dp-foot" id="dp-footer"></div>
         </div>
@@ -669,7 +681,8 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
     'Emerald & mint':{bg:'#0d2a22',ink:'#e4f4ec',accent:'#9fe3c0',accentInk:'#0a2019',card:'#16382e',line:'#426458',radius:'14px',font:'"Bricolage Grotesque",sans-serif',tone2:'#1e5c48',tone3:'#d9c48a'},
     'Pearl & graphite':{bg:'#eceef0',ink:'#1c1f24',accent:'#1c1f24',accentInk:'#f4f5f6',card:'#f6f7f8',line:'#c4c8ce',radius:'0',font:'"Bricolage Grotesque",sans-serif',tone2:'#8a9099',tone3:'#d8d2c6'}
   };
-  var state={name:'',item:'Cushions & throws',look:'Fresh editorial'};
+  var actions=['Shop on WhatsApp','Book a service','View our work'];
+  var state={name:'',headline:'',tagline:'',action:'Shop on WhatsApp',item:'Cushions & throws',look:'Fresh editorial'};
   var $=function(id){return document.getElementById(id)};
   function addChips(hostId,choices,key){
     var host=$(hostId);
@@ -689,17 +702,23 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
     var vars={'--dp-bg':look.bg,'--dp-ink':look.ink,'--dp-ac':look.accent,'--dp-ac-ink':look.accentInk,'--dp-card':look.card,'--dp-line':look.line,'--dp-radius':look.radius,'--dp-font':look.font,'--dp-t2':look.tone2,'--dp-t3':look.tone3};
     Object.keys(vars).forEach(function(key){preview.style.setProperty(key,vars[key]);});
     $('dp-preview-name').textContent=name;
-    $('dp-headline').textContent='Beautiful '+item.label+' for every home.';
-    $('dp-subline').textContent='Browse '+name+' and order in one tap on WhatsApp. Delivery across Kenya.';
+    $('dp-headline').textContent=state.headline.trim()||'Beautiful '+item.label+' for every home.';
+    $('dp-subline').textContent=state.tagline.trim()||'Browse '+name+' and order in one tap on WhatsApp. Delivery across Kenya.';
+    $('dp-cta-preview').textContent=state.action;
     var credit=$('dp-footer');credit.textContent='© 2026 '+name+' · Made by Growth Solutions by ';
     var adam=document.createElement('a');adam.href='https://my-portfolio-omega-sand-89.vercel.app/';adam.target='_blank';adam.rel='noopener';adam.textContent='Adam';
     credit.appendChild(adam);
     var products=$('dp-products');products.textContent='';
     item.products.forEach(function(label){var card=document.createElement('div'),art=document.createElement('div'),caption=document.createElement('span');card.className='dp-product';art.className='dp-product-art';caption.textContent=label;card.appendChild(art);card.appendChild(caption);products.appendChild(card);});
-    var message='Hi, I run '+(state.name.trim()||'a business')+'. I mainly sell '+item.label+'. I like the “'+state.look+'” look. Please send me my free website preview.';
+    var message='Hi, I run '+(state.name.trim()||'a business')+'. I mainly sell '+item.label+'. I like the “'+state.look+'” look and the “'+state.action+'” button. Please send me my free website preview.';
     $('dp-send').href='https://wa.me/254792120237?text='+encodeURIComponent(message);
   }
   $('dp-name').addEventListener('input',function(event){state.name=event.target.value;render();});
+  $('dp-custom-headline').addEventListener('input',function(event){state.headline=event.target.value;render();});
+  $('dp-custom-tagline').addEventListener('input',function(event){state.tagline=event.target.value;render();});
+  var actionChoices={};
+  actions.forEach(function(label){actionChoices[label]=label;});
+  addChips('dp-actions',actionChoices,'action');
   addChips('dp-items',items,'item');addChips('dp-looks',looks,'look');render();
 })();
 </script>
